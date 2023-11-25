@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+
+</head>
+<body>
+<th:block th:insert="/Admin/Header.html"></th:block>
+
+
+        <div class="content-body">
+
+                    <div class="col-lg-12 col-sm-6">
+                        <div class="card">
+                            <div class="stat-widget-two card-body">
+                                <div class="stat-content">
+                                    <div class="container-fluid">
+			<div class="card-header text-center bg-primary text-white ">
+				<h5 class="text-white">Sell List</h5>
+			</div>
+
+			<div class="card-body">
+				<table class="table table-stripted">
+
+
+
+					<thead>
+
+						<tr>
+							<th class="text-dark">Product Id</th>
+							<th class="text-dark">Amount</th>
+							<th class="text-dark">Quantity</th>
+							<th class="text-dark">User Id</th>
+							
+							
+						</tr>
+
+					</thead>
+
+
+
+
+					<tbody>
+
+							<tr th:each="s : ${sellList}">
+
+<td class="text-dark">[[${s.product.id}]]</td>
+<td class="text-dark">[[${s.amount}]]</td>
+<td class="text-dark">[[${s.quantity}]]</td>
+<td class="text-dark">[[${s.user.id}]]</td>
+							
+	
+
+						</tr>
+
+					</tbody>
+
+				</table>
+
+
+			</div>
+
+		</div>
+		
+		</div>
+		
+		</div>
+		</div>
+		</div>
+		</div>
+
+<th:block th:insert="/Admin/Footer.html"></th:block>
+
+</body>
+</html>

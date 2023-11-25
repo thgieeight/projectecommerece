@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Focus - Bootstrap Admin Dashboard </title>
+    <!-- Favicon icon -->
+    <link rel="icon" type="image/png" sizes="16x16" href="/focus-2./images/favicon.png">
+    <link rel="stylesheet" href="/focus-2./vendor/owl-carousel/css/owl.carousel.min.css">
+    <link rel="stylesheet" href="/focus-2./vendor/owl-carousel/css/owl.theme.default.min.css">
+    <link href="/focus-2./vendor/jqvmap/css/jqvmap.min.css" rel="stylesheet">
+    <link href="/focus-2./css/style.css" rel="stylesheet">
+
+
+
+</head>
+
+<body>
+
+<th:block th:insert="/Admin/Header.html"></th:block>
+
+
+        <!--**********************************
+            Content body start
+        ***********************************-->
+        <div class="content-body">
+                    
+
+                    <div class="col-lg-12 col-sm-6">
+                        <div class="card">
+                            <div class="stat-widget-two card-body">
+                                <div class="stat-content">
+            
+            
+            <h2>Welcome Admin</h2>
+            </div>
+            </div>
+            </div>
+            </div>
+            
+            
+            <!-- row -->
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-lg-3 col-sm-6">
+    <div class="card">
+        <div class="stat-widget-two card-body">
+            <div class="stat-content">
+                <div class="stat-text">No. of categories</div>
+                <div class="stat-digit"><span th:text="${catListCount}"></span></div>
+            </div>
+            <div class="progress">
+                <div class="progress-bar progress-bar-success" role="progressbar" aria-valuemin="0" aria-valuemax="100"
+                     th:style="'width: ' + ${catListCount * 10} + '%'" aria-valuenow="${catListCount * 10}">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="col-lg-3 col-sm-6">
+    <div class="card">
+        <div class="stat-widget-two card-body">
+            <div class="stat-content">
+                <div class="stat-text">No. of Brands</div>
+                <div class="stat-digit"><span th:text="${brandsListCount}"></span></div>
+            </div>
+            <div class="progress">
+                <div class="progress-bar progress-bar-primary" role="progressbar" aria-valuemin="0" aria-valuemax="100"
+                     th:style="'width: ' + ${brandsListCount * 10} + '%'" aria-valuenow="${brandsListCount * 10}">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="col-lg-3 col-sm-6">
+    <div class="card">
+        <div class="stat-widget-two card-body">
+            <div class="stat-content">
+                <div class="stat-text">No. of Products</div>
+                <div class="stat-digit"><span th:text="${productListCount}"></span></div>
+            </div>
+            <div class="progress">
+                <div class="progress-bar progress-bar-warning" role="progressbar" aria-valuemin="0" aria-valuemax="100"
+                     th:style="'width: ' + ${productListCount * 10} + '%'" aria-valuenow="${productListCount * 10}">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+                    <div class="col-lg-3 col-sm-6">
+                        <div class="card">
+                            <div class="stat-widget-two card-body">
+                                <div class="stat-content">
+                                    <div class="stat-text">No. of Sold item</div>
+                                    <div class="stat-digit"> <i class="fa fa-usd"></i>650</div>
+                                </div>
+                                <div class="progress">
+                                    <div class="progress-bar progress-bar-danger w-65" role="progressbar" aria-valuenow="65" aria-valuemin="0" aria-valuemax="100"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- /# card -->
+                    </div>
+                    <!-- /# column -->
+               
+                </div>
+
+            </div>       
+            
+        </div>
+        <!--**********************************
+            Content body end
+        ***********************************-->
+
+<th:block th:insert="/Admin/Footer.html"></th:block>
+
+</body>
+
+</html>

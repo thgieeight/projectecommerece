@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+
+</head>
+<body>
+<th:block th:insert="/Admin/Header.html"></th:block>
+
+        <div class="content-body">
+
+                    <div class="col-lg-12 col-sm-6">
+                        <div class="card">
+                            <div class="stat-widget-two card-body">
+                                <div class="stat-content">
+                                    <div class="container-fluid">
+			<div class="card-header text-center bg-primary text-white ">
+				<h5 class="text-white">Slider List</h5>
+			</div>
+
+			<div class="card-body">
+				<table class="table table-stripted">
+
+
+
+					<thead>
+
+						<tr>
+							<th  class="text-dark">Heading</th>
+							<th  class="text-dark">Sub-Heading</th>
+							<th  class="text-dark">Status</th>
+							<th  class="text-dark">Photo</th>
+							<th  class="text-dark">Action</th>
+						</tr>
+
+					</thead>
+
+
+
+
+					<tbody>
+
+						<tr th:each="s: ${sliderlist}">
+
+							<td  class="text-dark">[[${s.heading}]]</td>
+							<td  class="text-dark">[[${s.subheading}]]</td>					
+							<td class="text-dark">
+  								<span th:if="${s.status == '1'}">active</span>
+  								<span th:unless="${s.status == '1'}">inactive</span>
+							</td>
+							<td>
+					<img th:src="@{'/images/' + ${s.photo}}" alt="Slider Photo" width="50" height="50">
+							
+							</td>
+							<td>
+							<a th:href="@{/Admin/Slider/edit(id=${s.id})}"><input type="submit" value="Edit" class="btn btn-success"></a>
+							<a th:href="@{/Admin/Slider/delete(id=${s.id})}" onclick="return confirm('Are you sure you want to delete?')">
+  								<input type="submit" value="Delete" class="btn btn-danger">
+							</a>
+							 <a th:href="@{/Admin/Slider/view(id=${s.id})}"><input type="submit" value="View" class="btn btn-primary"></a>
+							 </td>
+
+						</tr>
+
+					</tbody>
+
+				</table>
+
+
+			</div>
+
+		</div>
+
+	</div>
+
+</div>
+</div>
+</div>
+</div>
+
+
+
+<th:block th:insert="/Admin/Footer.html"></th:block>
+
+</body>
+</html>

@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+
+<th:block th:insert="Header.html"></th:block>
+
+<br>
+		<br>
+		<br>
+
+<!-- Shoping Cart -->
+<form class="bg0 p-t-75 p-b-85">
+    <div class="container">
+        <div class="row">
+
+                        <table class="table-shopping-cart">
+                            <!-- Table Heading -->
+                            <thead>
+                                <tr>
+                                    <th>Image</th>
+                                    <th>Product Name</th>
+                                    <th>Price</th>
+                                    <th>Quantity</th>
+                                    <th>Amount</th>
+                                </tr>
+                            </thead>
+                            <!-- Inside the <table class="table-shopping-cart"> -->
+                            <tbody>
+                                <tr th:each="cartItem : ${cartItems}">
+                                    <td class="column-1">
+                                        <div class="how-itemcart1">
+                                            <img th:if="${cartItem.product != null}" th:src="@{'/images/' + ${cartItem.product.photo}}" alt="Product Image" height="100" width="200">
+                                        </div>
+                                    </td>
+                                    <td class="column-2" th:text="${cartItem.product.pname}"></td>
+                                    <td class="column-3">$<span th:text="${cartItem.product.price}"></span></td>
+                                    <td class="column-4">
+                                        <div class="flex-w m-l-auto m-r-0">
+                                        <span th:text="${cartItem.quantity}"></span>
+                                        </div>
+                                    </td>
+                                    <td class="column-5">
+                                    <div class="flex-w m-l-auto m-r-0">
+                                    Rs<span th:text="${cartItem.amount}"></span>
+                                        </div>
+                                        </td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+
+
+			</div>
+		</div>
+	</form>
+<div class="container">
+    <div class="row">
+        <div class="col-6">
+            <a href="/Clear"><button class="border btn btn-dark checkout-btn" type="button">Clear</button></a>
+            <a href="/Checkout"><button class="border btn btn-dark checkout-btn" type="button">Checkout</button></a>
+            
+        </div>
+        <div class="col-6 text-right">
+            <h2>Total</h2>
+<p class="stext-108 cl6"><span class="total-amount" id="totalAmount">0.00</span></p>
+        </div>
+    </div>
+</div>
+		<br>		<br>
+				<br>
+				<br>
+				<br>
+				<br>
+				<br>
+				<br>
+				<br>
+				<br>
+				<br>
+				<br>
+				<br>
+				<br>
+				<br>
+		<br>
+
+		
+	<th:block th:insert="Footer.html"></th:block>
+	
+<script>
+    // Get all elements with class "total-amount"
+    const totalAmountElements = document.getElementsByClassName("total-amount");
+
+    // Initialize the total amount
+    let totalAmount = 0;
+
+    // Loop through each cart item and update the total amount
+    const cartItems = document.getElementsByClassName("column-5");
+    for (let i = 0; i < cartItems.length; i++) {
+        const amountText = cartItems[i].textContent.trim(); // Remove leading/trailing whitespace
+        const amountValue = parseFloat(amountText.replace('Rs', '')); // Remove 'Rs' and convert to a number
+        totalAmount += amountValue;
+    }
+
+    // Update the total amount on the page
+    for (let i = 0; i < totalAmountElements.length; i++) {
+        totalAmountElements[i].textContent = 'Rs' + totalAmount.toFixed(2);
+    }
+</script>
+
+
+
+</body>
+</html>

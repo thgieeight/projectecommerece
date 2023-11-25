@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+
+</head>
+<body>
+<th:block th:insert="/Admin/Header.html"></th:block>
+
+        <div class="content-body">
+
+                    <div class="col-lg-12 col-sm-6">
+                        <div class="card">
+                            <div class="stat-widget-two card-body">
+                                <div class="stat-content">
+                                    <div class="container-fluid">
+			<div class="card-header text-center bg-primary text-white ">
+				<h5 class="text-white">Product List</h5>
+			</div>
+
+			<div class="card-body">
+				<table class="table table-stripted">
+
+
+
+					<thead>
+
+						<tr>
+							<th  class="text-dark">Category</th>
+							<th  class="text-dark">Brand</th>
+							<th  class="text-dark">Product Name</th>
+							<th  class="text-dark">Price</th>
+							<th  class="text-dark">Description</th>
+							<th  class="text-dark">Photo</th>
+							<th  class="text-dark">Action</th>
+						</tr>
+
+					</thead>
+
+
+
+
+					<tbody>
+
+						<tr th:each="p: ${productList}">
+
+							<td class="text-dark">[[${p.Category.categoryname}]]</td>
+							<td class="text-dark">[[${p.brand.bname}]]</td>
+							<td class="text-dark">[[${p.pname}]]</td>
+							<td class="text-dark">[[${p.price}]]</td>
+							<td class="text-dark">[[${p.description}]]</td>
+
+							<td>
+					<img th:src="@{'/images/' + ${p.photo}}" alt="Product Photo" width="50" height="50">
+							
+						<td>
+							<a th:href="@{/Admin/Product/edit(id=${p.id})}"><input type="submit" value="Edit" class="btn btn-success"></a>
+							<a th:href="@{/Admin/Product/delete(id=${p.id})}" onclick="return confirm('Are you sure you want to delete?')">
+							<input type="submit" value="Delete" class="btn btn-danger">
+							</a>
+							 <a th:href="@{/Admin/Product/view(id=${p.id})}"><input type="submit" value="View" class="btn btn-primary"></a>
+							 </td>
+
+						</tr>
+
+					</tbody>
+
+				</table>
+
+
+			</div>
+
+		</div>
+
+	</div>
+
+</div>
+</div>
+</div>
+</div>
+
+
+
+<th:block th:insert="/Admin/Footer.html"></th:block>
+
+</body>
+</html>
